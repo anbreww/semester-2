@@ -1,0 +1,176 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                     Semester project 2 	              %%
+%%                   Table-less air hockey   		      %%
+%%                       Andrew Watson                        %%
+%%                           MT-MA1                           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{includes/preamble}
+% duplicating graphicx here because of vim-latex autodetect
+\newcommand{\thedate}{January 8, 2010}
+\usepackage[pdftex]{graphicx} 
+\usepackage{pdfpages}
+\begin{document}
+\begin{titlepage}
+\nocite{*}      % to make sure bibliography appears in the correct order
+  \begin{center}
+     
+     
+    % Upper part of the page
+    \includegraphics[width=4cm]{logo_epfl}\\[1.5cm]
+     
+    \textsc{\LARGE Microtechnique }\\[1.0cm]
+
+    \textsc{\Large Projet de Semestre au LAI}\\[0.1cm]
+
+    \vfill 
+     
+    % Title
+    \HRule \\[0.7cm]
+    { \huge \bfseries Etude et réalisation d'un jeu d'Air Hockey sans table à
+    air}\\[0.4cm]
+
+    \includegraphics[width=0.6\textwidth]{sideview} 
+     
+    \HRule \\[2.0cm]
+    
+    %% Author and supervisor
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+        \emph{Author:} \\
+        Andrew \textsc{Watson}\\[1.0cm]
+
+        Microengineering\\
+        Master - Semester 1\\[0.5cm]
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+        \emph{Supervisor:} \\
+        Maher \textsc{Kayal}\\[0.5cm]
+
+        \emph{Assistants:} \\
+        Fabrizio \textsc{Lo Conte}\\
+        Laurent \textsc{Fabre}\\[0.5cm]
+      \end{flushright}
+    \end{minipage} \\[2cm]
+     
+    \vfill
+     
+    % Bottom of the page
+    {\large \thedate}
+     
+  \end{center}
+
+\end{titlepage}
+%\maketitle
+
+\newpage{}
+
+%\fancyhead{}
+\fancyfoot{}
+\lhead{}
+\cfoot{\thepage}        % numéro de page..
+\lfoot{Semester Project}
+%\rfoot{\thedate}
+\rfoot{\thedate} 
+
+%\begin{abstract}
+%\end{abstract}
+
+\setcounter{secnumdepth}{5}
+
+%\renewcommand\contentsname{Plan}  % Rename ``Table des Matières''
+\tableofcontents{}
+
+\newpage
+
+%%%% BEGIN : LSTLISTINGS CONFIG %%%%%%
+%%%% TODO : MOVE TO SEPARATE FILE ONCE FINISHED %%%%%
+%% see http://www.jorgemarsal.com/blog/2009/06/08/source-code-snippets-in-latex/
+\lstset{language=C}
+%\definecolor{lightgrey}{RGB}{200,200,200}
+\definecolor{grey97}{gray}{0.97}
+\definecolor{grey92}{gray}{0.92}
+\definecolor{grey75}{gray}{0.75}
+\definecolor{grey45}{gray}{0.45}
+
+\lstdefinestyle{console}
+{
+  numbers=none,
+  %basicstyle=\bf\ttfamily,
+  basicstyle=\ttfamily\footnotesize,
+  backgroundcolor=\color{grey97},
+  frame=lrtb,
+  framerule=0.5pt,
+  linewidth=\textwidth,
+}
+\lstdefinestyle{avr-c}
+{
+  style=console
+}
+
+\lstset{
+  style=console
+}
+
+%%%%%%% END : LSTLISTINGS CONFIG %%%%%%%%
+
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+\markboth{Introduction}{\MakeUppercase{Introduction}}
+
+Blah
+
+\begin{description}
+  \item[Consumption] : indicate where energy is being consumed and by whom, as
+    well as extract statistics, which can be linked to other factors, like for
+    instance thermostat settings, outdoor temperature, activity in the
+    home\ldots
+  \item[React] to the environment : turn lights and other appliances on and off
+    depending on activity and time of day. It would be interesting for example
+    to turn off lights when no human presence is detected, to use power-hungry
+    devices during the night to even out power usage, or to adjust the lighting
+    to suit the amount of natural light coming in a room. 
+\end{description}
+
+The benefits of such a system are twofold : first, it has been
+demonstrated\cite{darby2006} that simply providing people with data about their
+energy consumption results in a substantial drop in power usage. It can also
+help to make statistics and comparisons between devices and households.
+
+\section{Conclusion}
+
+
+The hardware design is functional, and can be demonstrated as requested.
+However, not everything is fully functional, and many areas could be improved.
+Some of these, mostly the hardware changes, are described in section
+\tref{sec:design-changes} of the appendix. During the first phase of the
+project, a lot of time was spent researching solutions. In addition to this, the
+hardware design required more time than expected.
+
+All these, I believe, could be worth exploring in the future, and I hope that
+this platform may serve a purpose beyond the scope of this semester project.
+
+\vspace{3cm}
+Ecublens, le xx Juin 2011
+
+\vspace{2cm}
+Andrew Watson
+
+
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{ieeetr}
+\bibliography{biblio-airhockey}
+
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\appendix
+
+\section{Design changes}
+\label{sec:design-changes}
+\end{document}
+
