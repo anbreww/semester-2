@@ -191,14 +191,6 @@
 % add an empty blank page
 \newcommand{\blankpage}{\newpage\thispagestyle{empty}\null\newpage}
 
-% asterism!
-\newcommand{\asterism}{\smash{% 
-  \raisebox{-.5ex}{% 
-    \setlength{\tabcolsep}{-.5pt}% 
-    \begin{tabular}{@{}cc@{}}% 
-      \multicolumn2c*\\[-2ex]*&*% 
-    \end{tabular}}}}
-
 %% Custom commands for pictures
 \newcommand{\logoepfl}[0]{
   \begin{center}
@@ -207,3 +199,18 @@
   \vspace{0.3cm}
   \hrule
 }
+
+%% ASTERISM!!
+ \newcommand{\asterism}{\smash{% 
+    \raisebox{-.5ex}{% 
+      \setlength{\tabcolsep}{-.5pt}% 
+      \begin{tabular}{@{}cc@{}}% 
+        \multicolumn2c*\\[-2ex]*&*% 
+      \end{tabular}}}}
+
+\newcommand{\asterbreak}{%
+    \vspace{1ex}
+    \centerline{\asterism}
+    \vspace{1ex}
+    }
+

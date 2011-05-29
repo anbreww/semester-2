@@ -5,7 +5,7 @@ OUTPUT = $(BASE_NAME).pdf
 BIBSOURCE = biblio-airhockey
 
 pdf:
-	pdflatex $(TEXSOURCE) && pdflatex $(TEXSOURCE) && evince $(OUTPUT)
+	pdflatex $(TEXSOURCE) && pdflatex $(TEXSOURCE) 
 
 pdfquiet:
 	pdflatex $(TEXSOURCE) && pdflatex $(TEXSOURCE)
@@ -18,3 +18,6 @@ todo:
 
 clean:
 	rm -rf *.bbl *.aux *.blg *.log *.toc
+
+show:
+	evince $(OUTPUT)

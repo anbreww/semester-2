@@ -7,7 +7,7 @@
 
 \input{includes/preamble}
 % duplicating graphicx here because of vim-latex autodetect
-\newcommand{\thedate}{January 8, 2010}
+\newcommand{\thedate}{\today}
 \usepackage[pdftex]{graphicx} 
 \usepackage{pdfpages}
 \begin{document}
@@ -19,18 +19,18 @@
     % Upper part of the page
     \includegraphics[width=4cm]{logo_epfl}\\[1.5cm]
      
-    \textsc{\LARGE Microtechnique }\\[1.0cm]
+    \textsc{\LARGE Microengineering }\\[1.0cm]
 
-    \textsc{\Large Projet de Semestre au LAI}\\[0.1cm]
+    \textsc{\Large Semester project at LAI}\\[0.1cm]
 
     \vfill 
      
     % Title
     \HRule \\[0.7cm]
-    { \huge \bfseries Etude et réalisation d'un jeu d'Air Hockey sans table à
-    air}\\[0.4cm]
+    { \huge \bfseries Self-sustaining air hockey puck}\\[0.2cm]
+    { \large \bfseries Design and study of an actuator}\\[0.4cm]
 
-    \includegraphics[width=0.6\textwidth]{sideview} 
+    \includegraphics[width=0.6\textwidth]{hockey-title} 
      
     \HRule \\[2.0cm]
     
@@ -38,20 +38,19 @@
     \begin{minipage}{0.4\textwidth}
       \begin{flushleft} \large
         \emph{Author:} \\
-        Andrew \textsc{Watson}\\[1.0cm]
+        Andrew \textsc{Watson}\\[0.7cm]
 
         Microengineering\\
-        Master - Semester 1\\[0.5cm]
+        Master - Semester 2\\[0.5cm]
       \end{flushleft}
     \end{minipage}
     \begin{minipage}{0.4\textwidth}
       \begin{flushright} \large
         \emph{Supervisor:} \\
-        Maher \textsc{Kayal}\\[0.5cm]
+        Yves \textsc{Perriard}\\[0.7cm]
 
-        \emph{Assistants:} \\
-        Fabrizio \textsc{Lo Conte}\\
-        Laurent \textsc{Fabre}\\[0.5cm]
+        \emph{Assistant:} \\
+	Christophe \textsc{Winter}\\[0.5cm]
       \end{flushright}
     \end{minipage} \\[2cm]
      
@@ -121,7 +120,32 @@
 \addcontentsline{toc}{section}{Introduction}
 \markboth{Introduction}{\MakeUppercase{Introduction}}
 
-Blah
+Currently, the game of air hockey is played with a puck and two 
+% TODO: find name
+paddles.
+Both the paddles and the puck are passive pieces of plastic. The game therefore
+necessitates a heavy and expensive air table to generate a thin film of air,
+which reduces the friction between the puck and the table.
+
+The premise of this project is to design an actuator similar to an air hockey
+puck, which can generate its own air film and thus function on any flat surface.
+
+Talk about:
+Cost
+
+Scope of project (i.e. not going to actually build one, calculate with
+approximations, then simulate)
+
+Clarify approach (steps)
+
+\asterbreak
+
+However, not everything is fully functional, and many areas could be improved.
+Some of these, mostly the hardware changes, are described in section
+project, a lot of time was spent researching solutions. In addition to this, the
+hardware design required more time than expected.
+energy consumption results in a substantial drop in power usage. It can also
+help to make statistics and comparisons between devices and households.
 
 \begin{description}
   \item[Consumption] : indicate where energy is being consumed and by whom, as
@@ -146,7 +170,6 @@ help to make statistics and comparisons between devices and households.
 The hardware design is functional, and can be demonstrated as requested.
 However, not everything is fully functional, and many areas could be improved.
 Some of these, mostly the hardware changes, are described in section
-\tref{sec:design-changes} of the appendix. During the first phase of the
 project, a lot of time was spent researching solutions. In addition to this, the
 hardware design required more time than expected.
 
