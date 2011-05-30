@@ -140,29 +140,45 @@ Clarify approach (steps)
 
 \asterbreak
 
-However, not everything is fully functional, and many areas could be improved.
-Some of these, mostly the hardware changes, are described in section
-project, a lot of time was spent researching solutions. In addition to this, the
-hardware design required more time than expected.
-energy consumption results in a substantial drop in power usage. It can also
-help to make statistics and comparisons between devices and households.
 
+\section{Operating principle}
+% TODO : explain principle
+
+The self-levitating puck does not need an external air supply. Instead, it
+creates its own air film by vibrating at a high frequency.
+
+The puck is composed of four main elements:
+
+% TODO : create picture with letters
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{overview}
+  \end{center}
+  \caption{Overall view}
+  \label{fig:overview}
+\end{figure}
+
+% TODO : convert to list with letters
+% TODO : make this list more brief, try to make a mory lengthy, wordy and easy
+% to follow explanation
 \begin{description}
-  \item[Consumption] : indicate where energy is being consumed and by whom, as
-    well as extract statistics, which can be linked to other factors, like for
-    instance thermostat settings, outdoor temperature, activity in the
-    home\ldots
-  \item[React] to the environment : turn lights and other appliances on and off
-    depending on activity and time of day. It would be interesting for example
-    to turn off lights when no human presence is detected, to use power-hungry
-    devices during the night to even out power usage, or to adjust the lighting
-    to suit the amount of natural light coming in a room. 
+  \item[A] The original puck, made of yellow ABS plastic. This is the base
+    around which the system is built. The main idea of this project is to re-use
+    a standard puck, according to USAA rules. With the addition of the other
+    components, it will no longer be acceptable by official game rules though.
+  \item[B] The membrane is made of FR-4 (an epoxy mainly used in circuit board
+    design). This membrane will resonate to create the pressure necessary to
+    lift the contraption.
+  \item[C] An aluminium support ring will provide mechanical robustness to the
+    device, as well as provide one fixed point for the membrane to move around.
+  \item[D] A piezo-electric actuator, in this case a ring stack, will actuate
+    the membrane, exciting it at one of its resonant frequencies, in order to
+    get the best possible vertical displacement.
 \end{description}
 
-The benefits of such a system are twofold : first, it has been
-demonstrated\cite{darby2006} that simply providing people with data about their
-energy consumption results in a substantial drop in power usage. It can also
-help to make statistics and comparisons between devices and households.
+% TODO : explain how the squeeze film works. Why there is more air coming in
+% than going out. add graphs from Wiesendanger
+
 
 \section{Conclusion}
 
