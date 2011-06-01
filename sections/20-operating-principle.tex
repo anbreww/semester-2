@@ -17,20 +17,23 @@ The puck is composed of four main elements:
 % TODO : convert to list with letters
 % TODO : make this list more brief, try to make a mory lengthy, wordy and easy
 % to follow explanation
-\begin{description}
-  \item[A] The original puck, made of yellow ABS plastic. This is the base
-    around which the system is built. The main idea of this project is to re-use
-    a standard puck, according to USAA rules. With the addition of the other
+\begin{enumerate}[A]
+  \item The original puck, made of yellow ABS plastic. This is the base around
+    which the system is built. The main idea of this project is to re-use a
+    standard puck, according to USAA rules. With the addition of the other
     components, it will no longer be acceptable by official game rules though.
-  \item[B] The membrane is made of FR-4 (an epoxy mainly used in circuit board
-    design). This membrane will resonate to create the pressure necessary to
-    lift the contraption.
-  \item[C] An aluminium support ring will provide mechanical robustness to the
+  \item The membrane, which is made of FR-4 (an epoxy mainly used in circuit
+    board design). This membrane will resonate to create the pressure necessary
+    to lift the contraption.
+  \item An aluminium support ring will provide mechanical robustness to the
     device, as well as provide one fixed point for the membrane to move around.
-  \item[D] A piezo-electric actuator, in this case a ring stack, will actuate
+  \item A piezo-electric actuator, in this case a ring stack, will actuate
     the membrane, exciting it at one of its resonant frequencies, in order to
     get the best possible vertical displacement.
-\end{description}
+\end{enumerate}
+
+
+\subsection{Squeeze film}
 
 % TODO : explain how the squeeze film works. Why there is more air coming in
 % than going out. add graphs from Wiesendanger
@@ -41,4 +44,12 @@ The puck is composed of four main elements:
   \end{center}
   \caption{Boundary airflow}
   \label{fig:boundary-airflow}
+\end{figure}
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{nonlinear-p-h-relationship}
+  \end{center}
+  \caption{Non-linear relationship between pressure and air film thickness}
+  \label{fig:nonlinear-relationship}
 \end{figure}
