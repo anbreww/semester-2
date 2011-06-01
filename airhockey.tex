@@ -6,65 +6,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{includes/preamble}
-% duplicating graphicx here because of vim-latex autodetect
+\input{includes/listings}
+
 \newcommand{\thedate}{\today}
-\usepackage[pdftex]{graphicx} 
-\usepackage{pdfpages}
+
+\usepackage[pdftex]{graphicx}
+
 \begin{document}
-\begin{titlepage}
-\nocite{*}      % to make sure bibliography appears in the correct order
-  \begin{center}
-     
-     
-    % Upper part of the page
-    \includegraphics[width=4cm]{logo_epfl}\\[1.5cm]
-     
-    \textsc{\LARGE Microengineering }\\[1.0cm]
 
-    \textsc{\Large Semester project at LAI}\\[0.1cm]
-
-    \vfill 
-     
-    % Title
-    \HRule \\[0.7cm]
-    { \huge \bfseries Self-sustaining air hockey puck}\\[0.2cm]
-    { \large \bfseries Design and study of an actuator}\\[0.4cm]
-
-    \includegraphics[width=0.6\textwidth]{hockey-title} 
-     
-    \HRule \\[2.0cm]
-    
-    %% Author and supervisor
-    \begin{minipage}{0.4\textwidth}
-      \begin{flushleft} \large
-        \emph{Author:} \\
-        Andrew \textsc{Watson}\\[0.7cm]
-
-        Microengineering\\
-        Master - Semester 2\\[0.5cm]
-      \end{flushleft}
-    \end{minipage}
-    \begin{minipage}{0.4\textwidth}
-      \begin{flushright} \large
-        \emph{Supervisor:} \\
-        Yves \textsc{Perriard}\\[0.7cm]
-
-        \emph{Assistant:} \\
-	Christophe \textsc{Winter}\\[0.5cm]
-      \end{flushright}
-    \end{minipage} \\[2cm]
-     
-    \vfill
-     
-    % Bottom of the page
-    {\large \thedate}
-     
-  \end{center}
-
-\end{titlepage}
-%\maketitle
+\input{sections/00-title}
 
 \newpage{}
+
 
 %\fancyhead{}
 \fancyfoot{}
@@ -77,139 +30,11 @@
 %\begin{abstract}
 %\end{abstract}
 
-\setcounter{secnumdepth}{5}
+\setcounter{secnumdepth}{4}
 
 %\renewcommand\contentsname{Plan}  % Rename ``Table des Matières''
 \tableofcontents{}
 
-\newpage
-
-%%%% BEGIN : LSTLISTINGS CONFIG %%%%%%
-%%%% TODO : MOVE TO SEPARATE FILE ONCE FINISHED %%%%%
-%% see http://www.jorgemarsal.com/blog/2009/06/08/source-code-snippets-in-latex/
-\lstset{language=C}
-%\definecolor{lightgrey}{RGB}{200,200,200}
-\definecolor{grey97}{gray}{0.97}
-\definecolor{grey92}{gray}{0.92}
-\definecolor{grey75}{gray}{0.75}
-\definecolor{grey45}{gray}{0.45}
-
-\lstdefinestyle{console}
-{
-  numbers=none,
-  %basicstyle=\bf\ttfamily,
-  basicstyle=\ttfamily\footnotesize,
-  backgroundcolor=\color{grey97},
-  frame=lrtb,
-  framerule=0.5pt,
-  linewidth=\textwidth,
-}
-\lstdefinestyle{avr-c}
-{
-  style=console
-}
-
-\lstset{
-  style=console
-}
-
-%%%%%%% END : LSTLISTINGS CONFIG %%%%%%%%
-
-
-\section*{Introduction}
-\addcontentsline{toc}{section}{Introduction}
-\markboth{Introduction}{\MakeUppercase{Introduction}}
-
-Currently, the game of air hockey is played with a puck and two 
-% TODO: find name
-paddles.
-Both the paddles and the puck are passive pieces of plastic. The game therefore
-necessitates a heavy and expensive air table to generate a thin film of air,
-which reduces the friction between the puck and the table.
-
-The premise of this project is to design an actuator similar to an air hockey
-puck, which can generate its own air film and thus function on any flat surface.
-
-Talk about:
-Cost
-
-Scope of project (i.e. not going to actually build one, calculate with
-approximations, then simulate)
-
-Clarify approach (steps)
-
-\asterbreak
-
-
-\section{Operating principle}
-% TODO : explain principle
-
-The self-levitating puck does not need an external air supply. Instead, it
-creates its own air film by vibrating at a high frequency.
-
-The puck is composed of four main elements:
-
-% TODO : create picture with letters
-\begin{figure}[h]
-  \begin{center}
-    \includegraphics[width=0.8\textwidth]{overview}
-  \end{center}
-  \caption{Overall view}
-  \label{fig:overview}
-\end{figure}
-
-% TODO : convert to list with letters
-% TODO : make this list more brief, try to make a mory lengthy, wordy and easy
-% to follow explanation
-\begin{description}
-  \item[A] The original puck, made of yellow ABS plastic. This is the base
-    around which the system is built. The main idea of this project is to re-use
-    a standard puck, according to USAA rules. With the addition of the other
-    components, it will no longer be acceptable by official game rules though.
-  \item[B] The membrane is made of FR-4 (an epoxy mainly used in circuit board
-    design). This membrane will resonate to create the pressure necessary to
-    lift the contraption.
-  \item[C] An aluminium support ring will provide mechanical robustness to the
-    device, as well as provide one fixed point for the membrane to move around.
-  \item[D] A piezo-electric actuator, in this case a ring stack, will actuate
-    the membrane, exciting it at one of its resonant frequencies, in order to
-    get the best possible vertical displacement.
-\end{description}
-
-% TODO : explain how the squeeze film works. Why there is more air coming in
-% than going out. add graphs from Wiesendanger
-
-
-\section{Conclusion}
-
-
-The hardware design is functional, and can be demonstrated as requested.
-However, not everything is fully functional, and many areas could be improved.
-Some of these, mostly the hardware changes, are described in section
-project, a lot of time was spent researching solutions. In addition to this, the
-hardware design required more time than expected.
-
-All these, I believe, could be worth exploring in the future, and I hope that
-this platform may serve a purpose beyond the scope of this semester project.
-
-\vspace{3cm}
-Ecublens, le xx Juin 2011
-
-\vspace{2cm}
-Andrew Watson
-
-
-
-\pagebreak
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bibliographystyle{ieeetr}
-\bibliography{biblio-airhockey}
-
-\pagebreak
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\appendix
-
-\section{Design changes}
-\label{sec:design-changes}
+\input{01-body}
 \end{document}
 
