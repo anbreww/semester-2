@@ -10,5 +10,48 @@ topology seems feasible or not given the environmental properties.
 
 % TODO : rewrite that last sentence
 
+Once it has been established which parameters play a role in the design of the
+system, a simplified version of it will be analyzed in the frequency domain
+using finite element analysis. This should allow us to chart the resonant
+frequency according to various parameters. Since we are restricted to a certain
+range of frequencies, this will allow us to make a first selection among the
+various topologies proposed.
 
+Once we have confined our choice to a small subset of possible topologies, we
+can add some complexity to the models that we are simulating. The first step
+here is to move from frequency domain simulations to time domain simulations, as
+the first only give an idea of the shape of the movement, without giving any
+numerical values of displacement. This is due to the fact that the
+eigenfrequency simulation aims to find the exact resonant frequencies of a
+model, and without any damping, the movement is in theory infinite in this case.
 
+By simulating in the time domain, we can compare various topologies together,
+and verify whether the choices we made with regard to operating voltages and
+actuator size / layers are sane. In part %TODO : find reference
+, we will have calculated a minimum displacement necessary to lift the system.
+We will want to make sure that the results of the time domain simulation are
+coherent with the results from this section.
+
+Once we have obtained one or more topologies that fit our requirements, we can
+add the film damping element to our simulation. By using several of COMSOL's
+multiphysics modules, we can combine several types of interaction in one single
+model. Here, we will compute the displacement of the membrane when it is excited
+at its resonant frequency. The membrane displacement is then re-used as an input
+to the film damping module, which will calculate the pressure over the surface
+of the membrane.
+
+Once we have this information, we can average the pressure to obtain a vertical
+force, and observe the evolution of this force over time. If all goes well,
+after a few excitation cycles, this force should become sufficient to lift the
+system off the ground.
+
+In all these simulations, we assume that the mean airgap is constant. In
+reality, it will be affected by the performance of the system. If the system
+creates more pressure than necessary, the gap will increase. Since the absolute
+displacement of the membrane is constant, the relative displacement of the
+membrane with regard to the mean thickness will therefore decrease. The system
+should therefore be expected to stabilise at a certain height, which will depend
+on all the parameters seen previously.
+
+In the final round of simulations, we would like to take into account the weight
+of the system and gravitational force to verify these assumptions.
