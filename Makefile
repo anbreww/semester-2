@@ -14,7 +14,7 @@ bib:
 	pdflatex $(TEXSOURCE) && pdflatex $(TEXSOURCE) && bibtex $(BASE_NAME) && pdflatex $(TEXSOURCE)
 
 todo:
-	grep -i -n --colour todo *.tex 
+	grep -i -n -r --colour todo *.tex */*.tex
 
 clean:
 	rm -rf *.bbl *.aux *.blg *.log *.toc
