@@ -115,22 +115,53 @@ relative to the puck.
 
 \subsection{Topology 4}
 
+The topologies shown previously were discarded for reasons which will be
+explicited later in this report. As a consequence, two new topologies were
+proposed. Topology 4 will be the focus of the final part of the project, as it
+seems to give the best results.
+
+% TODO : make a schematic for TOPO 4
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.7\textwidth]{topo-5.png}
   \end{center}
-  \caption{Topology 5}
+  \caption{Using a ring actuator (topo 4)}
   \label{fig:topo-5}
 \end{figure}
+
+It is built on the same principle as Topology 2b, with a slight difference :
+instead of having the actuator in the centre of the device, it has now been
+moved to the outside, close to the supports. While this seems like a fairly
+trivial modification on paper, this means in reality that the actuator is now a
+large ring, which is much more costly to manufacture than the standard stack
+which was used in the previous designs.
+
+Hopefully, this design will provide sufficient lift so that the diameter of the
+membrane can be decreased, and thus use a smaller actuator.
+
 
 \subsection{Topology 5}
 
+The final proposition came up towards the end of the project, and therefore has
+not been simulated. It was discovered during the tests with the aforementioned
+toplogies that the plastic support was not sufficiently rigid to allow the
+device to function at a high frequency : beyond a certain frequency, the puck
+would vibrate more than the membrane. This design is meant to address this
+issue.
+
 \begin{figure}[h]
   \begin{center}
     \includegraphics[width=0.7\textwidth]{topo-5.png}
   \end{center}
-  \caption{Topology 5}
+  \caption{Using the device upside down : membrane as a counterweight (topo 5)}
   \label{fig:topo-5}
 \end{figure}
 
-
+Instead of vibrating a membrane close to the table, this design uses the
+opposite approach : the plastic disc is machined to offer a flat surface, and is
+used to generate the airgap. The part which previously acted as the membrane is
+now a counterweight, fitted on the top of the device. Since the plastic support
+is only a fraction of the total weight of the device, it is expected to move up
+and down faster than the device as a whole. Rather than articulating it around
+a set of supports, it relies on its inertia to provide a stable base for the
+pumping motion.
