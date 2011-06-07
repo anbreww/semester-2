@@ -1,1 +1,136 @@
-blah
+In the primary stages of the projects, several topologies were proposed for
+study. The aim here is to begin with a list of possible designs, which we can
+then analyze further, rejecting the designs which seem too complex or
+inefficient, to end up with one or more ideal topologies.
+
+These topologies can be divided into several categories. Note that all these
+illustrations, even though they lack symmetry axes, are actually cut views of an
+axisymmetric design. Supports or actuators that appear rectangular are therefore
+to be understood as discs.
+
+Topologies \numrange{1}{3} were proposed from the beginning of the project.
+After finding that neither of these gave suitable results, some modifications
+were proposed, in the form of topologies 4 and 5. The final results of this
+project are shown for topology 4.
+
+\subsection{Topology 1}
+
+The first \fig{fig:topo-4} is the most basic design. It is comprised of the plastic air hockey
+puck (yellow), the piezo-electric actuator (brown) and the membrane (white).
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{topo-4.png}
+  \end{center}
+  \caption{Simple membrane with actuator (topo 1)}
+  \label{fig:topo-4}
+\end{figure}
+
+This design is mostly shown for the sake of completeness, and because it is the
+simplest possible to build. However, since the goal of the project is to create
+a puck which is suitable for playing on a table, it will have to be reasonably
+resistant. In this design, the membrane is glued to the actuator, which is glued
+to the ABS support.
+
+The actuator itself is quite fragile, and especially sensitive to impact. Since
+this design does not provide any additional supports to the membrane, it will
+not be explored further. However, if the goal was to make a stationary device,
+or one that would not be subjected to external impact forces, this design might
+be worth analyzing.
+
+\subsection{Topology 2}
+
+Topology number two is a variation on the first proposal. Here, we add a
+supporting ring around the actuator, which will serve two functions.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{topo-2.png}
+  \end{center}
+  \caption{Membrane with supports (topo 2)}
+  \label{fig:topo-2}
+\end{figure}
+
+The first function is simply to protect the actuator, and provide a strong
+mechanical link between the plastic support and the membrane. The actuator
+itself cannot be expected to withstand strong shear forces. The support ring,
+which will probably be machined out of aluminium and glued to both parts of the
+device, should be able to absorb external forces that the device would endure.
+
+The second function, which will be described more in detail in section
+\tref{sub:lever} is to provide a mechanical lever. We expect that if the support
+is close to the actuator, it will act as a pivot point for the membrane, and the
+movement will be amplified as we go further away from the actuator.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{topo-1.png}
+  \end{center}
+  \caption{Membrane with supports on the outside (topo 2b)}
+  \label{fig:topo-1}
+\end{figure}
+
+\Fig{fig:topo-1} is a variation of this design, where the supports have been
+moved to the outside of the membrane. While it does not warrant a section of its
+own since it is simply a special case of this topology, it bears mentioning that
+it has some particularities which set it apart from the rest.
+
+Notably, the lever effect which we expect from this design will be absent from
+this case. We could however expect the membrane to bellow between the support
+and the actuator, and so still provide a higher maximum displacement in some
+areas than right above the actuator.
+
+Furthermore, we expect this design to be one of the most mechanically robust,
+since the outside of the membrane will be entirely connected to the plastic
+support. It does not offer any loose ends that could break upon impact with the
+edge of the playing surface, for instance.
+
+
+\subsection{Topology 3}
+
+The third design is similar to the previous in that the membrane is also
+supported by a metallic ring. However, in this case the actuator is no longer a
+stack connected between the membrane and the plastic puck. This time, we use a
+bender ring type, which is glued entirely to the membrane.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{topo-3.png}
+  \end{center}
+  \caption{Bender ring setup (topo 3)}
+  \label{fig:topo-3}
+\end{figure}
+
+The main advantage of this design is that the excursion of the membrane is no
+longer limited to the displacement of the actuator itself. It can move freely
+around the support ring, being supported only in one point. Another advantage
+that may come from this design is that in case of shocks, there should be little
+damage on the actuator : it is thinner than a piezo stack, and therefore has
+less inertia (which would provoke shear forces along the seam); in addition to
+this, the fact that it is only connected to one of the components of the puck
+means that it will not sustain any damage if the membrane moves sideways
+relative to the puck.
+
+%%% TODO : explain why we're not going to use this topo
+
+\subsection{Topology 4}
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{topo-5.png}
+  \end{center}
+  \caption{Topology 5}
+  \label{fig:topo-5}
+\end{figure}
+
+\subsection{Topology 5}
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{topo-5.png}
+  \end{center}
+  \caption{Topology 5}
+  \label{fig:topo-5}
+\end{figure}
+
+
