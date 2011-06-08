@@ -1,8 +1,182 @@
 \section{Simulations}
+
+The analytical approximations presented in the previous section tend to show
+that the specifications we defined are suitable for the design of an actuator.
+We can now move onto more complex models, using finite element analysis. 
+
+All the results presented in this section were obtained using COMSOL 3.5a. All
+simulations were made using an axi-symmetric model, which should produce a fair
+approximation of the desired result. This was done mainly to simplify things and
+reduce calculation times. Once a suitable model is obtained though, it would be
+worth running a complete simulation in three dimensions to account for the fact
+that the membrane does not move exactly the same way all around its axis of
+revolution.
+
 \subsection{Eigenfrequency approach}
+
+In the first round of simulations, we used COMSOL's Piezo Axial Symmetry module
+to calculate the eigenfrequency of various topologies, and understand how the
+system deforms at various frequencies. This step should allow us to select a few
+suitable designs to analyze further in the time domain, which takes more time to
+simulate.
+
+To do this, we chose a basic topology, and varied the main parameters (namely
+thickness of the membrane and dimensions of the supporting ring) and took note
+of the fundamental resonant frequency, as well as the first harmonic.
+
+The objective throughout this was to design the system with a standard actuator
+in mind, so as to reduce cost of parts, and make it easier to source parts in
+case a prototype was to be constructed.
+
 \subsubsection{Analytical model}
+
+The results in this section are not totally relevant to the final design, as the
+materials were not correctly defined when these simulations were made. The
+results referenced in the table below are quite suitable to create a model, but
+they are not applicable to the final design. The reason for this is that the
+materials that we wish to use are less rigid than the ones used in this
+simulation. As a result, the actual base frequencies are much too low to be of
+use (since we are aiming to operate above \SI{20}{\kilo\hertz}).
+
+However, they will still be shown, to illustrate the path that was taken to get
+to the end result, as well as to serve as a possible path for future tests.
+
+The model used was based on Topology 2, using a support diameter of
+\SI{67}{\milli\metre}, with a membrane \SI{50}{\milli\metre} in diameter. 
+
+To obtain the results given in \TAB{tab:eigenfrequencies}, we use 
+
+\begin{table}[h]
+  \centering
+    \begin{tabular}{l|l|l|l|l|l|l}
+      r[mm]  & \multicolumn{2}{c|}{\SI{0.8}{\milli\metre}} &
+		 \multicolumn{2}{c|}{\SI{1.6}{\milli\metre}} & 
+		 \multicolumn{2}{c}{\SI{2.4}{\milli\metre}} \\
+        \hline
+        5  & 1779 & 6560 & 3217 & 6767  & 3997 & 7679  \\ 
+        6  & 1950 & 6624 & 3478 & 6861  & 4238 & 7834  \\ 
+        7  & 2116 & 6529 & 3770 & 6996  & 4517 & 8057  \\ 
+        8  & 2393 & 6739 & 4104 & 7063  & 4799 & 8302  \\ 
+        9  & 2681 & 6790 & 4480 & 7224  & 5099 & 8613  \\ 
+        10 & 3036 & 6826 & 4868 & 7435  & 5410 & 8880  \\ 
+        11 & 3456 & 7058 & 5323 & 7662  & 5731 & 9538  \\ 
+        12 & 3981 & 7106 & 5784 & 8242  & 5948 & 10481 \\ 
+        13 & 4627 & 7284 & 6163 & 8908  & 6386 & 11284 \\ 
+        14 & 5417 & 7469 & 6552 & 9915  & 6808 & 12042 \\ 
+        15 & 6231 & 7939 & 6862 & 11183 & 7008 & 13658 \\ 
+        16 & 6850 & 9021 & 7066 & 12877 & 7242 & 15044 \\
+    \end{tabular}
+    \caption{Eigenfrequency for various positions and membrane thicknesses.}
+    \label{tab:eigenfrequencies}
+\end{table}
+
+The size of the mesh is important to obtain repeatable results. The parameters
+used in these simulations are referenced in \TAB{tab:mesh}. For the model used,
+the maximum element size can be varied between approximately 0.00010 and 0.00030
+and produce usable results. Any finer, and the simulation time becomes very
+long, any wider and the results begin to vary too much. For some of the higher
+frequencies, a mesh element size of 0.00010 had to be used to obtain repeatable
+results.  No area-specific parameters were used. The actuator is loaded with a
+voltage difference of \SI{200}{\volt}.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{l|l}
+    Maximum Element Size		&	0.00015	\\
+    Maximum Element size scaling factor	&	0.25	\\
+    Element growth rate			&	1.2	\\
+    Mesh curvature factor		&	0.25	\\
+    Mesh curvature cutoff		&	0.0003	\\
+    Resulution of narrow margins	&	1	\\
+    Refinement method			&	Regular	\\
+  \end{tabular}
+  \caption{Mesh parameters}
+  \label{tab:mesh}
+\end{table}
+
+Plotting the results of \TAB{tab:eigenfrequencies} produces the curves seen in
+\FIG{fig:frequencies}. In this figure, the top three curves represent the first
+harmonic, whereas the bottom three represent the base frequency, for each
+different actuator thickness. 
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{frequencies}
+  \end{center}
+  \caption{Plot of eigenfrequencies.}
+  \label{fig:frequencies}
+\end{figure}
+
+The system behaves as expected. If we assimilate the membrane to a cantilever
+beam, we can assume that it behaves similarly. In the case of a beam, the
+resonant frequency is given by the following equation \cite{roark2002}:
+
+\begin{equation}
+  f = \frac{K_n}{2\pi} \sqrt{\frac{E I}{w L^4}}
+  \label{eq:beam}
+\end{equation}
+
+Where $K_n = 3.52$ for the first vibration mode, $E$ is the Young's modulus. The
+lever is subjected to a uniform load $w$ and $L$ is the free unsupported length.
+If we assimilate $I$ to a square section, we have $I_x = {b h^3}/{12}$.
+
+Therefore, we can assume that the frequency is proportional to $\sqrt{h^3}$ and
+$\sqrt{L^4} = L^2$, where L is the unsupported length (overhanging from the
+support ring).
+
 \subsubsection{Problems with this approach}
 
+% TODO : explain what the problem is
+
+Since the previous results were inconclusive, the final time domain simulations
+were made with a different topology, as well as using a higher frequency. Since
+the results were no longer very consistent when using higher order harmonics,
+the approach presented here was abandoned, and instead, the topology to study
+was chosen empirically according to the shape of the membrane deformations.
+
+For the actuator to work efficiently, we wanted the following characteristics :
+\begin{enumerate}
+  \item Lowest possible harmonic, since the further we go, the more difficult it
+    is to excite only one vibration mode.
+  \item A reasonable number of ripples.
+  \item Not have an inflexion point at the point of contact with the actuator.
+\end{enumerate}
+
+The last item in particular is important. The greatest movement will happen at
+the antinodes. If the actuator is placed on a node, it will not be able to
+excite the membrane at its resonant frequency. Instead, we will want to place it
+somewhere in between, so that it can exicte the membrane, but still leave some
+room for mechanical amplification.
+
 \subsection{Time domain simulation}
+
+Once a topology has been chosen in the frequency domain, it is time to run it
+through a time domain simulation, which takes more time.
+
+In this stage, we use the same COMSOL module as before, and add an external
+voltage on the boundaries of the piezo actuator. This time, instead of applying
+a fixed voltage, we actuate it with a sinusoidal function, as the frequency that
+was calculated in the previous simulation. For a given voltage $V$ and frequency
+$f$ we give the following electric potential:
+
+\begin{equation}
+  v_0 = V sin(2\pi f t)
+  \label{eq:v0}
+\end{equation}
+
+With this, we can simulate over a few periods, and verify that the displacement
+seems sufficient, according to our specifications and estimations made in
+\tref{sec:calculations}. After a few iterations of running a time simulation,
+modifying the topology, calculating the eigenfrequency, and running a new
+simulation at the new frequency, we arrived at a satisfactory topology.
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{final-topo}
+  \end{center}
+  \caption{Final topology : support ring is at the far right, actuator left.}
+  \label{fig:final-overview}
+\end{figure}
+
 \subsubsection{Quality factor}
 \subsubsection{Adding film damping}
