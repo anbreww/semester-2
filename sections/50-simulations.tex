@@ -126,7 +126,13 @@ support ring).
 
 \subsubsection{Problems with this approach}
 
-% TODO : explain what the problem is
+As explained at the beginning of this section, these results are unfortunately
+not usable in the final design, since the materials were not defined correctly
+in the simulation. However, as we will see later, the last simulations seem to
+indicate that the membrane is more than large enough to provide sufficient lift
+to the system. Therefore, it is probably possible to reduce its size while
+keeping sufficient vertical force, thus raising the resonant frequency. If the
+frequency rises sufficiently, then this approach can indeed be used.
 
 Since the previous results were inconclusive, the final time domain simulations
 were made with a different topology, as well as using a higher frequency. Since
@@ -171,22 +177,20 @@ seems sufficient, according to our specifications and estimations made in
 modifying the topology, calculating the eigenfrequency, and running a new
 simulation at the new frequency, we arrived at a satisfactory topology.
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \begin{center}
-    \includegraphics[width=0.7\textwidth]{final-topo}
+    \includegraphics[width=0.8\textwidth]{final-topo-dims}
   \end{center}
   \caption{Final topology : support ring is at the far right, actuator left.}
   \label{fig:final-overview}
 \end{figure}
 
-% TODO : overlay mechanical dimensions
-
 With this topology, we obtain a resonant frequency $f = \SI{24055}{\hertz}$.
 When run 
 
-% TODO : mention quality factor
+% TODO : complete this
 
-% TODO : give material characteristics used, esp piezo
+\pagebreak
 \subsubsection{Simulation parameters}
 In the simulations made from \ref{sub:time-domain}, the following parameters
 were used.
@@ -299,8 +303,6 @@ Larger images, with legends can be found in appendix
   \label{fig:pressure-profile}
 \end{figure}
 
-% TODO : add scale
-
 To know if this is sufficient to lift the membrane, we must integrate the
 pressure over the whole surface of the membrane. COMSOL provides a sinmple way
 of integrating the quantity over the surface. This gives us a force for each
@@ -337,7 +339,7 @@ referenced in \FIG{fig:full-run}.
 
 \begin{figure}[h]
   \begin{center}
-    \includegraphics[width=0.9\textwidth]{full-run}
+    \includegraphics[width=0.7\textwidth]{full-run}
   \end{center}
   \caption{Plot of vertical force over the whole \SI{2}{\milli\second}
   simulation}
