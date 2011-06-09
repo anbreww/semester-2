@@ -177,18 +177,16 @@ seems sufficient, according to our specifications and estimations made in
 modifying the topology, calculating the eigenfrequency, and running a new
 simulation at the new frequency, we arrived at a satisfactory topology.
 
-\begin{figure}[!h]
-  \begin{center}
-    \includegraphics[width=0.8\textwidth]{final-topo-dims}
-  \end{center}
-  \caption{Final topology : support ring is at the far right, actuator left.}
-  \label{fig:final-overview}
-\end{figure}
 
 With this topology, we obtain a resonant frequency $f = \SI{24055}{\hertz}$.
-When run 
+When the simulation is run in the frequency domain, it is not possible to
+calculate values for the deflection, as it mainly solves for the eigenfrequency,
+where the displacement is theoretically infinite. The time domain simulation
+answers this by simulating over a period of time, and taking into account
+damping within the materials.
 
-% TODO : complete this
+The final topology used in these simulations can be found in Appendix
+\ref{sec:simulation-results}.
 
 \pagebreak
 \subsubsection{Simulation parameters}
@@ -331,7 +329,7 @@ In order to quantify the force, we must calculate the average over one period.
 The result of \EQ{eq:force} was calculated by exporting the time data to MATLAB,
 and using the \bash{trapz} function to perform a numerical integration. For the
 time period shown in \FIG{fig:one-period}, the result is a mean upward force of
-\SI{9999}{\newton}.  % TODO : insert value
+\SI{1460}{\newton}.  
 This is clearly much too high, and is probably due to the fact that the vertical
 position of the membrane relative to the table is fixed in the simulation. The
 evolution of the vertical force over the duration of the simulation is
