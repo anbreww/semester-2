@@ -183,5 +183,77 @@ simulation at the new frequency, we arrived at a satisfactory topology.
 With this topology, we obtain a resonant frequency $f = \SI{24055}{\hertz}$.
 When run 
 
+% TODO : mention quality factor
+
+% TODO : give material characteristics used, esp piezo
+
 \subsubsection{Quality factor}
 \subsubsection{Adding film damping}
+
+Now that we have established that the membrane displacement is sufficient, we
+can combine the film damping module with the piezo module to calculate the
+pressure along the surface of the membrane. To do this, we keep the same
+parameters as before in the piezo module, and add the displacement variable to
+the film damping module. The specific parameters for the film damping simulation
+can be found in \TAB{tab:film-damping}
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{l|l}
+    Variable				& value		\\
+    Second var				& value 	\\
+  \end{tabular}
+  \caption{Film damping simulation parameters}
+  \label{tab:film-damping}
+\end{table}
+
+The simulation is ran for time values between 0 and \SI{2}{\milli\second}.
+Unfortunately, the simulation does not quite stabilize after that time period,
+but the simulation length is limited by the quantity of memory on the computer
+running the simulations.
+
+Given the above input, the film damping module returns a pressure profile along
+the membrane, which is represented graphically in \FIG{fig:pressure-profile}
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{topo-f-24055-film-crop}
+  \end{center}
+  \caption{Graphical representation of the pressure profile along the membrane}
+  \label{fig:pressure-profile}
+\end{figure}
+
+% TODO : add scale
+
+To know if this is sufficient to lift the membrane, we must integrate the
+pressure over the whole surface of the membrane. COMSOL provides a sinmple way
+of integrating the quantity over the surface. This gives us a force for each
+time step that we have analyzed.
+
+We can then repeat the calculation automatically for each time step, which gives
+us the following graph for one period:
+
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.7\textwidth]{one-period}
+  \end{center}
+  \caption{Vertical force for one actuator period}
+  \label{fig:one-period}
+\end{figure}
+
+As can be seen in \FIG{fig:one-period}, the sine-like function is slightly
+assymetrical around zero. The average force is therefore positive (upwards).
+In order to quantify the force, we must calculate the average over one period. 
+
+\begin{equation}
+  F = \frac{1}{T} \int_{0}^{T} f(t) dt
+  \label{eq:force}
+\end{equation}
+
+The result of \EQ{eq:force} was calculated by exporting the time data to MATLAB,
+and using the \bash{trapz} function to perform a numerical integration. For the
+time period shown in \FIG{fig:one-period}, the result is a mean upward force of
+\SI{9999}{\newton}.  % TODO : insert value
+This is clearly much to high, and is probably due to the fact that the vertical
+position of the membrane relative to the table is fixed in the simulation.
+
