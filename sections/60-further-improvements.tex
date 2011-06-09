@@ -1,1 +1,56 @@
-Blah
+% TODO : some introduction sentence
+
+The first downside of the proposed design is that we are using harmonics that
+are way too high. As a result, it will be difficult to excite exactly the right
+mode, and we risk having too much parasitic movement which will impede the
+efficiency of the device.
+
+The problem is that the membrane is not sufficiently rigid, and therefore the
+base frequency is too low. There are two ways to alleviate this problem:
+
+\begin{itemize}
+  \item Use a smaller membrane: the smaller the membrane is, the higher the
+    frequency will be. Current simulations suggest that it should be possible to
+    shrink the membrane and still generate enough force to lift the device off
+    the table.
+  \item Use more rigid materials: the problem with this is that the system is
+    limited by its most supple element, the plastic puck. In order to use a more
+    rigid membrane, we would have to use a different material for the puck
+    itself, or rigidify the setup somehow, e.g. by adding a layer of aluminium
+    underneath the puck.
+\end{itemize}
+
+The second downside of this design is that it is not cost-effective. In the
+beginning, the goal of the project was to define a topology that allowed the use
+of a standard actuator, which would be easier and cheaper to source than a
+custom-made actuator. Unfortunately, this proved to be unsuccessful, and we are
+now left with a solution which diverged from the original plan, and uses a type
+of actuator that seems quite difficult and expensive to obtain, mainly due to
+its large size. Here are two possible solutions:
+
+\begin{itemize}
+  \item Use a design with a bending ring. The original design proposed by M.
+    Wiesendanger uses a bending ring, and seems to function quite well. This
+    project intentionally explored other solutions rather than going with the
+    known working solution. 
+  \item Rather than use one big ring, place several smaller actuators at various
+    positions around the membrane. This would complicate the simulations
+    somewhat, and require that the actuator be simulated in three dimensions.
+    Since time was limited and the simulation software unfamiliar to the author,
+    this was not attempted within this project.
+\end{itemize}
+
+\asterbreak
+
+It is unfortunate that all the time spent on this project was put into
+simulations and calculations, without leading to a functional prototype. This
+would have been the ideal way to verify the simulations, if a practical model
+had been obtained through these methods. Instead, we have explored several
+options and topologies through simulations, which allowed us to discard some
+options, but has not really converged towards an ideal implementable solution. 
+
+The most likely solution now seems to be the one which was intentionally put to
+the side in the beginning, namely the design using a bending ring.
+
+
+
