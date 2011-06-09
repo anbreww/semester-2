@@ -149,6 +149,7 @@ somewhere in between, so that it can exicte the membrane, but still leave some
 room for mechanical amplification.
 
 \subsection{Time domain simulation}
+\label{sub:time-domain}
 
 Once a topology has been chosen in the frequency domain, it is time to run it
 through a time domain simulation, which takes more time.
@@ -186,8 +187,83 @@ When run
 % TODO : mention quality factor
 
 % TODO : give material characteristics used, esp piezo
+\subsubsection{Simulation parameters}
+In the simulations made from \ref{sub:time-domain}, the following parameters
+were used.
 
-\subsubsection{Quality factor}
+The support is made of a yellow ABS plastic.
+
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{l|l|l}
+    \multicolumn{3}{l}{Structural settings (Decoupled, Isotropic)}	\\
+    \hline
+    $E$		& \SI{2e9}{\pascal} 	& Young's Modulus 	\\
+    $v$		& \SI{0.33}{}		& Poisson's ratio	\\
+    $\rho$	& \SI{1150}{\kilo\gram\per\cubic\metre}	& Density	\\
+  \end{tabular}
+  \caption{Plastic support}
+  \label{tab:properties-plastic}
+\end{table}
+
+The choice of materials for the membrane was open. We decided to opt for FR-4,
+which is usually employed for the fabrication of printed circuit boards, as it
+is easy to obtain in various thicknesses as well as easy to machine.
+
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{l|l|l}
+    \multicolumn{3}{l}{Structural settings (Decoupled, Isotropic)}	\\
+    \hline
+    $E$		& \SI{400e6}{\pascal} 	& Young's Modulus 	\\
+    $v$		& \SI{0.33}{}		& Poisson's ratio	\\
+    $\rho$	& \SI{1850}{\kilo\gram\per\cubic\metre}	& Density	\\
+  \end{tabular}
+  \caption{FR4 Membrane}
+  \label{tab:properties-membrane}
+\end{table}
+
+
+The parameters for the piezo actuator were taken from the manufacturer's
+datasheet. The material chosen was Noliac's NCE46\furl{
+http://www.noliac.com/Files/Billeder/02\%20%
+Standard/Ceramics/Noliac_CEramics_NCE_datasheet.pdf }, since it offered the best
+specifications within the ``Hard'' piezo category, as well as a high quality
+factor ($Q_m$), which will lead to less energy dissipation within the actuator
+itself.
+
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{l|l|l}
+    \multicolumn{3}{l}{Structural settings (Piezoelectric)}	\\
+    \hline
+    \multicolumn{2}{l|}{Material model}	& Piezoelectric		\\
+    \multicolumn{2}{l|}{Constitutive form}	& Stress-charge form		\\
+    \multicolumn{2}{l|}{Material orientation}	& xz plane		\\
+    \hline
+    $E$		& \SI{400e6}{\pascal} 	& Young's Modulus 	\\
+    $v$		& \SI{0.33}{}		& Poisson's ratio	\\
+    $\rho$	& \SI{7700}{\kilo\gram\per\cubic\metre}	& Density	\\
+  \end{tabular}
+  \caption{FR4 Membrane}
+  \label{tab:properties-membrane}
+\end{table}
+
+To take into account the energy absorbed by the materials themselves, the
+following parameters were added under the ``Damping'' tab:
+
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{l|l|l}
+    \multicolumn{3}{l}{Structural Damping : Rayleigh}	\\
+    \hline
+    $\alpha_{dM}$ & \SI{11}{\per\second} & Mass damping parameter	\\
+    $\beta_{dK}$  & \SI{0}{\second} & Stiffness damping parameter	\\
+  \end{tabular}
+  \caption{Damping settings}
+  \label{tab:properties-damping}
+\end{table}
+
 \subsubsection{Adding film damping}
 
 Now that we have established that the membrane displacement is sufficient, we
@@ -195,17 +271,15 @@ can combine the film damping module with the piezo module to calculate the
 pressure along the surface of the membrane. To do this, we keep the same
 parameters as before in the piezo module, and add the displacement variable to
 the film damping module. The specific parameters for the film damping simulation
-can be found in \TAB{tab:film-damping}
+can be found in \FIG{fig:film-damping-settings}
 
-\begin{table}[h]
-  \centering
-  \begin{tabular}{l|l}
-    Variable				& value		\\
-    Second var				& value 	\\
-  \end{tabular}
-  \caption{Film damping simulation parameters}
-  \label{tab:film-damping}
-\end{table}
+\begin{figure}[!h]
+  \begin{center}
+    \includegraphics[width=0.6\textwidth]{film-damping-settings}
+  \end{center}
+  \caption{Film damping parameters}
+  \label{fig:film-damping-settings}
+\end{figure}
 
 The simulation is ran for time values between 0 and \SI{2}{\milli\second}.
 Unfortunately, the simulation does not quite stabilize after that time period,
@@ -213,7 +287,9 @@ but the simulation length is limited by the quantity of memory on the computer
 running the simulations.
 
 Given the above input, the film damping module returns a pressure profile along
-the membrane, which is represented graphically in \FIG{fig:pressure-profile}
+the membrane, which is represented graphically in \FIG{fig:pressure-profile}.
+Larger images, with legends can be found in appendix
+\ref{sec:simulation-results}.
 
 \begin{figure}[h]
   \begin{center}
@@ -254,6 +330,20 @@ The result of \EQ{eq:force} was calculated by exporting the time data to MATLAB,
 and using the \bash{trapz} function to perform a numerical integration. For the
 time period shown in \FIG{fig:one-period}, the result is a mean upward force of
 \SI{9999}{\newton}.  % TODO : insert value
-This is clearly much to high, and is probably due to the fact that the vertical
-position of the membrane relative to the table is fixed in the simulation.
+This is clearly much too high, and is probably due to the fact that the vertical
+position of the membrane relative to the table is fixed in the simulation. The
+evolution of the vertical force over the duration of the simulation is
+referenced in \FIG{fig:full-run}.
 
+\begin{figure}[h]
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{full-run}
+  \end{center}
+  \caption{Plot of vertical force over the whole \SI{2}{\milli\second}
+  simulation}
+  \label{fig:full-run}
+\end{figure}
+
+Unfortunately, there was not enough time to push the simulations any further.
+Some improvements over the current status will be proposed in
+\tref{sec:other-solutions} : \nameref{sec:other-solutions}
