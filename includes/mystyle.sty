@@ -180,7 +180,12 @@
 
 % ~ sign
 \newcommand{\appr}{$\sim$}
+
+% reference with section symbol §
 \newcommand{\tref}[1]{\textsection~\ref{#1}}
+
+% full text reference : ``§ 1.4 : Section name''
+\newcommand{\fullref}{1}\tref{#1} : \nameref{#1}
 
 % horizontal ruler
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
