@@ -1,5 +1,33 @@
 \section{Specifications}
 \label{sec:specs}
 
+The following page contains the system specifications as they were defined at
+the beginning of the project. The design used in the final simulations adheres
+to these specifications, with the exception of the total system height, which is
+slightly higher than \SI{12}{\milli\metre}.
+
+This is difficult to avoid when using a piezo stack, since the system is meant
+to operate at low voltages. The design proposed by M. Wiesendanger
+\cite{wiesendanger2001} would probably resolve this issue, as the membrane could
+sit closer to the support.
+
+\includepdf[pages=1]{specifications.pdf}
+
 \section{Simulation results}
 \label{sec:simulation-results}
+
+\begin{figure}[!h]
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{topo-f-24055-disp}
+  \end{center}
+  \caption{Full screenshot of displacement at \SI{24055}{\hertz}}
+  \label{fig:full-displacement}
+\end{figure}
+
+\begin{figure}[!h]
+  \begin{center}
+    \includegraphics[width=0.9\textwidth]{topo-f-24055-pressure}
+  \end{center}
+  \caption{Full screenshot of pressure at \SI{24055}{\hertz}}
+  \label{fig:full-pressure}
+\end{figure}
