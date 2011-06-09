@@ -1,14 +1,13 @@
 The project is divided into several stages.
 
-The first stage involves getting familiar with the existing literature on the
+The first stage involved getting familiar with the existing literature on the
 subject of air bearings and film damping.
 
 From here, it was possible to use some available analytical models, and through
 some simplification, to evaluate which parameters will be important in the
-design of the actuator and membrane, as well as estimate whether the desired
-topology seems feasible or not given the environmental properties.
-
-% TODO : rewrite that last sentence
+design of the actuator and membrane, as well as estimate whether or not the
+topology will satisfy the requirements we defined at the beginning of the
+project. These specifications can be found in Appendix \ref{sec:specs}.
 
 Once it has been established which parameters play a role in the design of the
 system, a simplified version of it will be analyzed in the frequency domain
@@ -27,10 +26,10 @@ model, and without any damping, the movement is in theory infinite in this case.
 
 By simulating in the time domain, we can compare various topologies together,
 and verify whether the choices we made with regard to operating voltages and
-actuator size / layers are sane. In part %TODO : find reference
-, we will have calculated a minimum displacement necessary to lift the system.
-We will want to make sure that the results of the time domain simulation are
-coherent with the results from this section.
+actuator size / layers are sane. In section \tref{sec:calculations} , we will have
+calculated a minimum displacement necessary to lift the system.  We will want to
+make sure that the results of the time domain simulation are coherent with the
+results from this section.
 
 Once we have obtained one or more topologies that fit our requirements, we can
 add the film damping element to our simulation. By using several of COMSOL's
